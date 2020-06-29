@@ -22,7 +22,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
+      
+    - uses: actions/cache@v2
+      with:
+        path: /root/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+          
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
