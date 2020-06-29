@@ -34,4 +34,10 @@ jobs:
     - name: Run a multi-line script
       run: |
         chmod +x ./gradlew
-        ./gradlew assembleRelease
+        ./gradlew assembleDebug
+    
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: android-autodev.apk
+        path: ./app/build/outputs/apk/debug/app-debug.apk
